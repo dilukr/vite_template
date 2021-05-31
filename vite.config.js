@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [reactRefresh()],
   server: {
       proxy:{
-        "/test/":{
-            target: 'http://192.168.1.1/',
+        "/api/":{
+            target: 'http://localhost/',
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^test/, '/a/')
+            //rewrite: (path) => path.replace(/^test/, '/a/')
           }
       }
   },
