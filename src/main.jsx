@@ -7,8 +7,10 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Page1 from './components/page1';
 
+
+import Page1 from './components/page1';
+import Page2 from './components/page2';
 
 export default function App() {
   return (
@@ -20,10 +22,10 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">Abdfout</Link>
+              <Link to="/page1">Page1</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/page2">Page2</Link>
             </li>
           </ul>
         </nav>
@@ -31,11 +33,11 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
+          <Route path="/page1">
             <Page1 />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/page2">
+            <Page2 />
           </Route>
           <Route path="/">
             <Home />
