@@ -1,25 +1,31 @@
 import React , { useState, useEffect }from 'react';
 import getdata from '../lib/getdata'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../models/page1';
 
-function Page1({}){
-    const [count, setCount] = useState(0);
+function Page1({}) {
+
+    const count = useSelector(state => state.counter.value)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        document.title = `You clicked ${count} times`;
         getdataAction()
-    },[]);
+    }, []);
 
-    function getdataAction(){
+    function getdataAction() {
         getdata("api/test.json").then(data => {
             console.log(data)
         })
     }
-    
+
     return (
         <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>
-                Click me
+            <button aria-label="Increment value" onClick={()=> dispatch(increment())}>
+                Increment
+            </button>
+            <span>{count}</span>
+            <button aria-label="Decrement value" onClick={()=> dispatch(decrement())}>
+                Decrement
             </button>
         </div>
     )
