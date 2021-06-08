@@ -1,7 +1,7 @@
-import request from '../utils/request';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+const GetPosts = createAsyncThunk(
+  "post/getPosts", async () => await axios.get(`/api/test.json`)
+);
 
-export function fetch() {
-  return request(`/api/test.json`,{
-    credentials: 'include'
-  });
-}
+export default GetPosts;
