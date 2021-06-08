@@ -5,7 +5,11 @@ import { decrement, increment } from '../models/page1';
 
 function Page1({}) {
 
-    const count = useSelector(state => state.counter.value)
+    //获取redux中的数据
+    const count = useSelector(state => state.counter.value);
+    const page1Obj = useSelector(state => state.page2);
+    console.log(page1Obj)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
