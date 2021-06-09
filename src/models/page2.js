@@ -1,4 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
+import axios from "axios";
+
+export const fetchUserById = createAsyncThunk(
+  'users/fetchByIdStatus',
+  async (userId, thunkAPI) => {
+    const response = await axios.get(`/api/test.json?useid=${userId}`)
+    return response.data
+  }
+)
+
+
 
 export const page2Slice = createSlice({
   name: 'page2',
@@ -19,6 +30,14 @@ export const page2Slice = createSlice({
     },
     incrementByAmount: (state, action) => {
       state.value += action.payload
+    }
+  },
+  extraReducers: {
+    // Add reducers for additional action types here, and handle loading state as needed
+    [fetchUserById.fulfilled]: (state, action) => {
+      // Add user to the state array
+      console.log(action.payload)
+      state.value = action.payload.code
     }
   }
 })

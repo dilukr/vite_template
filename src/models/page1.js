@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import GetPosts from '../services/index'
+//import GetPosts from '../services/index'
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -25,14 +25,14 @@ export const counterSlice = createSlice({
       state.value += action.payload
     }
   },
-  extraReducers: {
-    [GetPosts.fulfilled]: (state, action) => {
-      state.posts = action.payload.data;
-    },
-    [GetPosts.rejected]: (state, action) => {
-     state.posts = [];
-    }
-  }
+  // extraReducers: {
+  //   [GetPosts.fulfilled]: (state, action) => {
+  //     state.posts = action.payload.data;
+  //   },
+  //   [GetPosts.rejected]: (state, action) => {
+  //    state.posts = [];
+  //   }
+  // }
 })
 
 // Action creators are generated for each case reducer function
