@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import store from './store';
+import 'antd/dist/antd.less'
 import { Provider } from 'react-redux'
 import {
   BrowserRouter as Router,
