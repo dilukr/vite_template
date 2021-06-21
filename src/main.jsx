@@ -12,8 +12,10 @@ import {
 } from "react-router-dom";
 
 
+//引入分页
 import Page1 from './components/page1';
 import Page2 from './components/page2';
+import Page3 from './components/page3';
 
 export default function App() {
   return (
@@ -36,6 +38,9 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/page3">
+            <Page3 />
+          </Route>
           <Route path="/page1">
             <Page1 />
           </Route>
