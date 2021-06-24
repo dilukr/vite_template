@@ -1,13 +1,8 @@
 import React , { useState, useEffect }from 'react';
 
-import ReactEcharts from 'echarts-for-react';
-// 引入 ECharts 主模块
-import echarts from 'echarts/lib/echarts';
-// 引入柱状图
-import 'echarts/lib/chart/bar';
-// 引入提示框和标题组件
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/component/title';
+import * as echarts from 'echarts';
+
+
 
 
 function barOption(){
@@ -28,8 +23,35 @@ function barOption(){
 }
 
 
+
 function Page3() {
-    return <div><ReactEcharts option={barOption()} /></div>
+    const [data, SetData] = useState([5, 20, 36, 10, 10, 20])
+    useEffect(()=>{
+        let myChart = echarts.init(document.getElementById('echarts_area'));
+        myChart.setOption({
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: data
+            }]
+        });
+    })
+    
+    console.log(data)
+    return (
+        <div>
+            <div id="echarts_area" style={{width:500,height:300}} />
+            <button style={{width:20,height:30}} onClick={()=>{SetData([1,2,3,4,5,6])}}></button>
+        </div>
+    )
 }
 
 export default Page3;
