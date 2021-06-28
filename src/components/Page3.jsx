@@ -2,7 +2,9 @@ import React , { useState, useEffect }from 'react';
 
 import * as echarts from 'echarts';
 
+import { Form, Input, Button, Checkbox } from 'antd';
 
+import addDataComponent from './demo1/addData';
 
 function Page3() {
     const [data, SetData] = useState([5, 20, 36, 10, 10, 20])
@@ -26,10 +28,17 @@ function Page3() {
     })
     
     console.log(data)
+    const onFinish = (values) => {
+        console.log('Success:', values);
+      };
+    
+    const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+    };
     return (
         <div>
+            <button style={{width:50,height:50}} onClick={()=>{addDataComponent({data:1})}}>点击</button>
             <div id="echarts_area" style={{width:500,height:300}} />
-            <button style={{width:20,height:30}} onClick={()=>{SetData([1,2,3,4,5,6])}}></button>
         </div>
     )
 }
