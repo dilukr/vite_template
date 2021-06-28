@@ -1,44 +1,53 @@
 import React , { useState, useEffect }from 'react';
 
 import * as echarts from 'echarts';
+import styles from './Page3.module.less';
 
 import { Form, Input, Button, Checkbox } from 'antd';
 
 import addDataComponent from './demo1/addData';
 
+
+
+
 function Page3() {
-    const [data, SetData] = useState([5, 20, 36, 10, 10, 20])
+    //纵坐标数值
+    const [data, setData] = useState([5, 20])
+    //横坐标，类型
+    const [type, setType] = useState(['洗衣机','消毒柜'])
+
     useEffect(()=>{
         let myChart = echarts.init(document.getElementById('echarts_area'));
         myChart.setOption({
             title: {
-                text: 'ECharts 入门示例'
+                text: '销量统计图'
             },
             tooltip: {},
             xAxis: {
-                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+                data: type
             },
             yAxis: {},
             series: [{
                 name: '销量',
                 type: 'bar',
+                barWidth : 30,
                 data: data
             }]
         });
     })
     
-    console.log(data)
-    const onFinish = (values) => {
-        console.log('Success:', values);
-      };
+    function addbarData(obj){
+        console.log(obj)
+        setData(data.concat([obj.value]))
+        setType(type.concat([obj.type]))
+    }
     
-    const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-    };
     return (
-        <div>
-            <button style={{width:50,height:50}} onClick={()=>{addDataComponent({data:1})}}>点击</button>
-            <div id="echarts_area" style={{width:500,height:300}} />
+        <div className={styles.main}>
+            <div>
+                <div id="echarts_area" style={{width:800,height:300}} />
+            </div>
+            <button style={{width:150,height:50}} onClick={()=>{addDataComponent({onOK:addbarData})}}>添加数据</button>
         </div>
     )
 }

@@ -5,6 +5,15 @@ import * as ReactDOM from 'react-dom';
 
 let div = null;
 
+/**
+ *
+ * 
+ * 添加数据
+ * 点击确定时返回表单所有数值
+ * @param {*} props
+ * @returns
+ * 
+ */
 function AddData (props){
   var [visible, setVisible] = useState(true);
   const [form] = Form.useForm();
@@ -15,7 +24,13 @@ function AddData (props){
   function handleOk(e,a,b) {
     form.validateFields()
           .then((values) => {
-            console.log(values)
+            if(typeof(props.onOK) === "function"){
+               props.onOK(values)
+            }
+            const unmountResult = ReactDOM.unmountComponentAtNode(div);
+            if (unmountResult && div.parentNode) {
+              div.parentNode.removeChild(div);
+            }
           })
           .catch((info) => {
             console.log('Validate Failed:', info);
@@ -41,18 +56,30 @@ function AddData (props){
           visible={visible}
           onOk={handleOk}
           onCancel={handleCancel}
+          okText={"确定"}
+          cancelText={"取消"}
         >
             <Form layout="horizontal" form={form} layout={formItemLayout} style={{marginTop:25}}>
-            <Form.Item name="title" label="Title"
-                rules={[
-                    {
-                    required: true,
-                    message: 'Please input the title of collection!',
-                    },
-                ]}
-                >
-                    <Input />
-                </Form.Item>
+                  <Form.Item 
+                      name="type" 
+                      label="类别"
+                      rules={[{
+                          required: true,
+                          message: '请输入类别',
+                          },
+                      ]}>
+                      <Input />
+                  </Form.Item>
+                  <Form.Item 
+                      name="value" 
+                      label="销量"
+                      rules={[{
+                          required: true,
+                          message: '请输入销量',
+                          },
+                      ]}>
+                      <Input />
+                  </Form.Item>
             </Form> 
         </Modal>
 	  );
