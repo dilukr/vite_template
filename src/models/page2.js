@@ -1,10 +1,11 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
+import { getUserid }  from '../services/page2';
 
 export const fetchUserById = createAsyncThunk(
   'users/fetchByIdStatus',
   async (userId, thunkAPI) => {
-    const response = await axios.get(`/api/test.json?useid=${userId}`)
+    const response = await getUserid(userId)
     return response.data
   }
 )
