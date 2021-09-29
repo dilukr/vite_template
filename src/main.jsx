@@ -16,6 +16,7 @@ import {
 import Page1 from './components/Page1';
 import Page2 from './components/Page2';
 import Page3 from './components/Page3';
+import PerformanceTable from './components/performanceDemo/TablePerformanceSort'
 
 export default function App() {
   return (
@@ -38,6 +39,9 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/performance/table">
+            <PerformanceTable />
+          </Route>
           <Route path="/page3">
             <Page3 />
           </Route>

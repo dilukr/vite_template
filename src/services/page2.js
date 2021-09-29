@@ -1,6 +1,6 @@
-import post from '../utils/request'
+import { post }  from '../utils/request'
 
 
-export function getuserid(userId){
+export function getUserid(userId){
     return post(`/api/test.json?`,userId)
 }
