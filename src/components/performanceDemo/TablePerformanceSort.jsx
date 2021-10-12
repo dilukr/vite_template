@@ -24,25 +24,37 @@ function generateUUID(){
 };
 
 //获取唯一的UUID
-function getRandomid(){
-    var random = getRandom()
-    console.log(random)
-    if(array.includes(random)){
+function getRandomid(array){
+    const randomUUID = generateUUID()
+    if(array.includes(randomUUID)){
         getRandomid()
     }
-    else array.push(random)
+    else{
+        return randomUUID
+    }
 }
 
 function getUserList(){
-    new Array(10).map((item,index,array) => {
-        const 
-        return 
+    const UserList = new Array(10)
+    .join('.')
+    .split('.')
+    .map((item,index,array) => {
+        let userObj = {
+            name: getRandomWorld(3),
+            uuid: getRandomid(array)
+        }
+        return userObj
     })
+    return UserList
 }
 
 
 function TablePerformanceSort() {
-
+    const [userList, setUserList] = useState([]);
+    useEffect(()=>{
+        console.log(userList)
+        setUserList(getUserList());
+    },[])
     return (
         <div className={styles.main}>
            测试
