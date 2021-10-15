@@ -2,10 +2,12 @@ import React from 'react';
 import { Menu } from 'antd';
 const { SubMenu } = Menu;
 import {Link} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-export default function Layout(){
+function Layout(props){
+    //console.log(props)
     function handleClick(e){
-        console.log(e)
+        console.log(props)
     }
     return (
         <Menu onClick={handleClick} theme="dark" mode="horizontal">
@@ -27,3 +29,5 @@ export default function Layout(){
         </Menu>
     )
 }
+
+export default withRouter(Layout)
