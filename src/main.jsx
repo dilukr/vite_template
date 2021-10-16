@@ -7,12 +7,7 @@ import { Provider } from 'react-redux'
 import RouterView from './routerView.jsx'
 import Layout from './layout/Main'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 export default function App() {

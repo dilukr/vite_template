@@ -22,6 +22,7 @@ service.interceptors.response.use(
             console.error('授权已过期,请重新授权')
             return Promise.reject('error')
         }
+        return Promise.reject('error')
     },
     error => {
         return Promise.reject(error)
