@@ -26,6 +26,9 @@ function Layout(props){
             <Menu.Item key="performance">
                 <Link to="/performance/table">性能测试</Link>
             </Menu.Item>
+            <Menu.Item key="dsl">
+                <Link to="/dsl/dsl">自定义页面</Link>
+            </Menu.Item>
         </Menu>
     )
 }
